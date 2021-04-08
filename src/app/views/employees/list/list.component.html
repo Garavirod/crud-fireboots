@@ -1,1 +1,24 @@
-<p>list works!</p>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Start date</th>
+            <th class="d-done d-sm-block" scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>         
+          <tr class="table-primary" *ngFor="let item of [1,2,3,4,5]">
+            <th scope="row">Primary</th>
+            <td>Column content</td>
+            <td>Column content</td>
+            <td class="btn-group d-done d-sm-block" role="group">
+                <button type="button" class="btn btn-secondary mr-2">Delete</button>
+                <a [routerLink]="['/details/detail-employee',1]" type="button" class="btn btn-info mr-2">See</a> 
+                <a [routerLink]="['/edit/edit-empoyee', 1]" type="button" class="btn btn-warning">Update</a>                 
+            </td>
+          </tr>     
+        </tbody>
+      </table>
+</div>
