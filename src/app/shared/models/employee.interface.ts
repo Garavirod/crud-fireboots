@@ -1,6 +1,7 @@
 export interface Employee{
-    name: String;
-    lastName: String;
-    email: String;
+    id?:string;
+    name: string;
+    lastName: string;
+    email: string;
     startDate:Date;
 };

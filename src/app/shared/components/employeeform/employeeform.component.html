@@ -21,6 +21,6 @@
       <label for="exampleInputPassword1">Date</label>
       <input formControlName="date" type="date" class="form-control" id="exampleInputPassword1" placeholder="date">
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    <button [disabled]="isValidForm()" type="submit" class="btn btn-primary btn-block">Submit</button>
   </fieldset>
 </form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/app/shared/models/employee.interface';
+import { EmployeesService } from 'src/app/views/employees/employees.service';
 @Component({
   selector: 'app-employeeform',
   templateUrl: './employeeform.component.html',
@@ -15,13 +16,18 @@ export class EmployeeformComponent implements OnInit {
 
   constructor(
     private activeRoute:ActivatedRoute,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private employeeService:EmployeesService
   ) { 
     this.formGroupEmployee = this.initFormGroup();
   }
 
   ngOnInit(): void {
     this.idEmployee = this.activeRoute.snapshot.params.id;
+  }
+
+  isValidForm():boolean{
+    return !this.formGroupEmployee.valid;
   }
 
   private initFormGroup():FormGroup{
@@ -43,7 +49,11 @@ export class EmployeeformComponent implements OnInit {
   }
 
   saveRegister(){
-    console.log(this.formGroupEmployee.value);    
+    console.log(this.formGroupEmployee.value);
+    const employee = this.formGroupEmployee.value;
+    const emplyId = this.employee?.id || null;
+    this.employeeService.onSaveEmployee(employee, emplyId);
+    this.formGroupEmployee.reset();
   }
 
 }
