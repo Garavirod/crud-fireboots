@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HeaderModule } from './shared/components/header/header.module';
 import { EmployeeformModule } from './shared/components/employeeform/employeeform.module';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +18,10 @@ import { EmployeeformModule } from './shared/components/employeeform/employeefor
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
-    EmployeeformModule
+    EmployeeformModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [],
+  providers: [ AngularFirestore ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

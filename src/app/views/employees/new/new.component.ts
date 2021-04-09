@@ -7,5 +7,5 @@ export class NewComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-
+  
 }

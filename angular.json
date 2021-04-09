@@ -127,6 +127,10 @@
               "devServerTarget": "crud-fireboots:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "crud-fireboots": {
+      "hosting": {
+        "crud-fireboots": [
+          "crud-fireboots"
+        ]
+      }
+    }
+  }
+}
