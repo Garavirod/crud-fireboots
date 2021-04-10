@@ -35,6 +35,13 @@ export class EmployeeformComponent implements OnInit {
     }
   }
 
+  isValidField(field:string):string{
+    // Obtain a specific field in ordter to valid it   
+    const validatedfield = this.formGroupEmployee.get(field);
+    return (!validatedfield?.valid && validatedfield?.touched)
+    ? 'is-invalid' : validatedfield?.touched ? 'is-valid' : '';
+  }
+
   isValidForm():boolean{
     return !this.formGroupEmployee.valid;
   }
