@@ -3,21 +3,30 @@
     <legend>Register</legend>
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
-      <input formControlName="name" type="text" class="form-control" id="exampleInputEmail1"
-        aria-describedby="emailHelp" placeholder="Name" [class]="isValidField('name')">
+      <input formControlName="name" type="text" class="form-control" 
+       placeholder="Name" [class]="isValidField('name')">
       <div class="invalid-feedback">
-        <span *ngIf="formGroupEmployee.get('name')?.errors?.required">this field is required</span>
+        <span *ngIf="formGroupEmployee.get('name')?.errors?.required">This field is required</span>
       </div>
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Lastname</label>
-      <input formControlName="lastname" type="text" class="form-control" id="exampleInputEmail1"
-        aria-describedby="emailHelp" placeholder="Lastname">
+      <input formControlName="lastname" type="text" class="form-control" 
+       placeholder="Lastname">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Email</label>
-      <input formControlName="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+      <input 
+        formControlName="email" 
+        type="email" 
+        class="form-control"         
+        placeholder="Email" 
+        [class]="isValidField('email')">
+      <div class="invalid-feedback">
+        <span *ngIf="formGroupEmployee.get('email')?.errors?.required">This field is required</span>
+        <span *ngIf="formGroupEmployee.get('email')?.errors?.pattern">Enter a valid email</span>
+      </div>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Date</label>
