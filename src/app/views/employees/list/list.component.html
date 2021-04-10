@@ -14,9 +14,9 @@
             <th scope="row">{{ item.name }}</th>
             <td scope="row">{{ item.lastname }}</td>
             <td>{{ item.email }}</td>
-            <td>{{ item.startDate}}</td>
+            <td>{{ item.startDate }}</td>
             <td class="btn-group d-done d-sm-block" role="group">
-                <button type="button" class="btn btn-secondary mr-2">Delete</button>
+                <button type="button" class="btn btn-secondary mr-2" (click)="onDelete(item.id)">Delete</button>
                 <button type="button" class="btn btn-info mr-2" (click)="onGoToDetail(item)" >See</button> 
                 <button type="button" class="btn btn-warning" (click)="onGoToEdit(item)">Update</button>                 
             </td>

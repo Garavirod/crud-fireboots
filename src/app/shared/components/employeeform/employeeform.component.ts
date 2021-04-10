@@ -28,7 +28,7 @@ export class EmployeeformComponent implements OnInit {
   ngOnInit(): void {
     if(typeof this.employee === 'undefined'){
       // Redirect      
-      this.router.navigate(['list']);
+      this.router.navigate(['new']);
     }
     else{
       this.formGroupEmployee.patchValue(this.employee);

@@ -18,7 +18,7 @@ export class EmployeesService {
     this.employees = this.setEmployees();    
   }
 
-  onDeleteEmployee(id:string):Promise<void>{
+  onDeleteEmployee(id:string|any):Promise<void>{
     return new Promise( async (resolve,reject) => {
       try {
         const result = this.employeescollection.doc(id).delete();

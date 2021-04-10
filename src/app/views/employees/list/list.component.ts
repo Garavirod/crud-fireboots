@@ -36,4 +36,13 @@ export class ListComponent implements OnInit {
     this.router.navigate(['/details/detail-employee'], this.navigationExtras);
   }
 
+  async onDelete(id:string|any): Promise<void> {
+    try {
+      await this.employeeService.onDeleteEmployee(id);
+      alert("Deleted");
+    } catch (error) {
+      console.log(error);    
+    }
+  }
+
 }
