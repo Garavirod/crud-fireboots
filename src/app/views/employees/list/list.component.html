@@ -3,20 +3,22 @@
         <thead>
           <tr>
             <th scope="col">Name</th>
+            <th scope="col">Lastname</th>
             <th scope="col">Email</th>
             <th scope="col">Start date</th>
             <th class="d-done d-sm-block" scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>         
-          <tr class="table-primary" *ngFor="let item of [1,2,3,4,5]">
-            <th scope="row">Primary</th>
-            <td>Column content</td>
-            <td>Column content</td>
+          <tr class="table-primary" *ngFor="let item of employee$ | async ">
+            <th scope="row">{{ item.name }}</th>
+            <td scope="row">{{ item.lastname }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.startDate}}</td>
             <td class="btn-group d-done d-sm-block" role="group">
                 <button type="button" class="btn btn-secondary mr-2">Delete</button>
-                <a [routerLink]="['/details/detail-employee',1]" type="button" class="btn btn-info mr-2">See</a> 
-                <a [routerLink]="['/edit/edit-empoyee', 1]" type="button" class="btn btn-warning">Update</a>                 
+                <button type="button" class="btn btn-info mr-2" (click)="onGoToDetail(item)" >See</button> 
+                <button type="button" class="btn btn-warning" (click)="onGoToEdit(item)">Update</button>                 
             </td>
           </tr>     
         </tbody>

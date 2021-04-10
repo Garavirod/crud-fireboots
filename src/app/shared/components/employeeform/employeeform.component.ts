@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/shared/models/employee.interface';
 import { EmployeesService } from 'src/app/views/employees/employees.service';
 @Component({
@@ -17,13 +17,22 @@ export class EmployeeformComponent implements OnInit {
   constructor(
     private activeRoute:ActivatedRoute,
     private fb:FormBuilder,
-    private employeeService:EmployeesService
-  ) { 
+    private employeeService:EmployeesService,
+    private router:Router
+  ) {
+    const navigation = this.router.getCurrentNavigation();
+    this.employee = navigation?.extras?.state?.value; 
     this.formGroupEmployee = this.initFormGroup();
   }
 
   ngOnInit(): void {
-    this.idEmployee = this.activeRoute.snapshot.params.id;
+    if(typeof this.employee === 'undefined'){
+      // Redirect      
+      this.router.navigate(['list']);
+    }
+    else{
+      this.formGroupEmployee.patchValue(this.employee);
+    }
   }
 
   isValidForm():boolean{

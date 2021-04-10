@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { EmployeesService } from '../employees.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  employee$ = this.employeeService.employees;
 
-  constructor() { }
+  navigationExtras:NavigationExtras|any = {
+    state: {
+      value: null,
+    }
+  };
+
+  constructor(
+    private employeeService:EmployeesService,
+    private router:Router
+  ) {
+    
+  }
 
   ngOnInit(): void {
+  }
+
+  onGoToEdit( item:any ): void{
+    this.navigationExtras.state.value = item;
+    this.router.navigate(['/edit/edit-empoyee'], this.navigationExtras);
+  }
+
+  onGoToDetail( item:any ): void{
+    this.navigationExtras.state.value = item;
+    this.router.navigate(['/details/detail-employee'], this.navigationExtras);
   }
 
 }

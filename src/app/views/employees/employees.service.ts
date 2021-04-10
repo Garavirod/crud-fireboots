@@ -8,13 +8,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmployeesService {
-  employees:Observable<Employee[]> | null = null;
+  employees:Observable<Employee[]>;
+  
   private employeescollection: AngularFirestoreCollection<Employee>;
 
   constructor(private readonly afs:AngularFirestore) { 
     this.employeescollection = afs.collection<Employee>('employees');
     /* Get all employees and asigned to employees */
-    this.setEmployees();    
+    this.employees = this.setEmployees();    
   }
 
   onDeleteEmployee(id:string):Promise<void>{
@@ -42,10 +43,10 @@ export class EmployeesService {
     });
   }
 
-  private setEmployees():void{
-    this.employees = this.employeescollection.snapshotChanges().pipe(
+  private setEmployees():Observable<Employee[]>{
+    return this.employeescollection.snapshotChanges().pipe(
       map(actions => actions.map(a => a.payload.doc.data() as Employee))
-    )
+    )    
   }
 
 }

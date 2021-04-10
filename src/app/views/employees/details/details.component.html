@@ -2,14 +2,14 @@
     <div class="card-header">Employee details</div>
     <div class="card-body">
       <ul>
-          <li>Name: Garavirod</li>
-          <li>Email: me@email.com</li>
-          <li>start date: 23-21-23</li>
+          <li>Name: {{employee?.name}}</li>
+          <li>Email: {{employee?.email}}</li>
+          <li>start date: {{employee?.startDate}}</li>
       </ul>
     </div>
     <div class="btn-group">
-        <a [routerLink]="['/edit/edit-empoyee', 1]" class="btn btn-outline-warning m-1 btn-sm">Edit</a>
+        <button class="btn btn-outline-warning m-1 btn-sm" (click)="onGoToEdit(employee)" >Edit</button>
         <button class="btn btn-outline-secondary m-1 btn-sm">Delete</button>
-        <a [routerLink]="['/list']" class="btn btn-outline-info m-1 btn-sm">go to list</a>
+        <button class="btn btn-outline-info m-1 btn-sm" (click)="onGoToList()">go to list</button>
     </div>
 </div>
